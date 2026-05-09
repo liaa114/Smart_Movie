@@ -140,7 +140,6 @@ useEffect(() => {
       }
     }
 
-    // Hanya fetch trending jika tidak ada search & tidak showFavorites
     if (!debouncedSearch && !showFavorites) {
       fetchTrending()
     }
