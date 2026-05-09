@@ -91,6 +91,8 @@ export default function Home() {
     setFavorites] =
     useState([])
 
+  const [trending, setTrending] = useState([])
+
   const [debouncedSearch] =
     useDebounce(search, 500)
 
@@ -127,6 +129,22 @@ export default function Home() {
   }
 }, [])
 
+
+useEffect(() => {
+    const fetchTrending = async () => {
+      try {
+        const trendingMovies = await getTrendingMovies()
+        setTrending(trendingMovies.results)
+      } catch (error) {
+        console.error("Failed to fetch trending movies:", error)
+      }
+    }
+
+    // Hanya fetch trending jika tidak ada search & tidak showFavorites
+    if (!debouncedSearch && !showFavorites) {
+      fetchTrending()
+    }
+  }, [debouncedSearch, showFavorites])
   const {
     data,
     isLoading,
@@ -142,7 +160,9 @@ export default function Home() {
   const movies =
     showFavorites
       ? favorites
-      : data?.results || []
+      : debouncedSearch
+        ? data?.results || []
+        : trending
 
   const getPageNumbers = () => {
     const pages = []
