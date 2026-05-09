@@ -7,9 +7,9 @@ import { Search } from "lucide-react"
 import MovieCard from "../components/MovieCard"
 
 import { useMovies } from "../hooks/useMovies"
+import { getTrendingMovies } from "../api/tmdb"
 
-import {
-  getFavorites,
+import {getFavorites,
 } from "../utils/favorites"
 
 function SearchBar({
@@ -402,12 +402,13 @@ export default function Home() {
           )}
 
           {!isLoading &&
-            movies.length === 0 && (
-              <p className="text-sm text-zinc-300">
+            movies.length === 0 &&
+            (showFavorites || debouncedSearch.trim() !== "") && (
+                <p className="text-sm text-zinc-300">
                 {showFavorites
-                  ? "No favorite movies yet"
-                  : "Movie not found"}
-              </p>
+                    ? "No favorite movies yet"
+                    : "Movie not found"}
+                </p>
             )}
 
         </div>
