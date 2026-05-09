@@ -10,10 +10,8 @@ export default function Home() {
   const [search, setSearch] = useState("")
   const [page] = useState(1)
 
-  const [debouncedSearch] = useDebounce(
-    search,
-    500
-  )
+  const [debouncedSearch] =
+    useDebounce(search, 500)
 
   const {
     data,
@@ -47,16 +45,17 @@ export default function Home() {
           </p>
         )}
 
-        {data?.Response === "False" && (
-          <p className="mt-5">
-            Movie not found
-          </p>
-        )}
+        {!isLoading &&
+          data?.results?.length === 0 && (
+            <p className="mt-5">
+              Movie not found
+            </p>
+          )}
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-8">
-          {data?.Search?.map((movie) => (
+          {data?.results?.map((movie) => (
             <MovieCard
-              key={movie.imdbID}
+              key={movie.id}
               movie={movie}
             />
           ))}
