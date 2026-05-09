@@ -18,7 +18,9 @@ export default function EmptyState({
         "Failed to fetch movie data"
 
       if (
-        error?.response?.status === 429
+        error?.message?.includes(
+          "429"
+        )
       ) {
         title = "API Limit Reached"
 
