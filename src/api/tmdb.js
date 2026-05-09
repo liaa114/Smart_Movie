@@ -52,3 +52,18 @@ export const getMovieDetail =
 
     return response.data
   }
+
+export const getMovieCredits =
+  async (id) => {
+    const response =
+      await tmdbApi.get(
+        `/movie/${id}/credits`,
+        {
+          params: {
+            api_key: API_KEY,
+          },
+        }
+      )
+
+    return response.data
+  }

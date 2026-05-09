@@ -18,7 +18,7 @@ export default function MovieCard({
         <img
             src={imageUrl}
             alt={movie.title}
-            className="w-full h-80 object-cover"/>
+            className="w-full h-75 object-cover"/>
 
         <div className="p-3">
             <h2 className="font-semibold text-sm text-white line-clamp-1">
