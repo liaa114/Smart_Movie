@@ -127,7 +127,7 @@ export default function Home() {
             </p>
           )}
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mt-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
           {isLoading
             ? Array.from({
                 length: 8,
