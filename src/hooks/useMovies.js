@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { searchMovies } from "../api/omdb"
+import { searchMovies } from "../api/tmdb"
 
 export const useMovies = (query, page) => {
   return useQuery({
