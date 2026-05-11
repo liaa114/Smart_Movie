@@ -87,7 +87,7 @@ http://localhost:5173
 
 * Search Movie with Debouncing
 * Trending Movies
-* Movie Detail Modal
+* Movie Detail Page
 * Pagination
 * Add & Remove Favorites
 * Favorites Persistence using LocalStorage
